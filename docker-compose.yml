@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    image: openjdk:11-jre-slim
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ./mvnw spring-boot:run
+    ports:
+      - '8080:8080'
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: customers_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306'
